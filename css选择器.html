@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css选择器</title>
+    <style>
+        /* 元素选择器 */
+        h2{
+            color: blue;
+        }
+        /* 类选择器 */
+        .highlight{
+            font-family:kaiti;
+        }
+        /* id选择器 */
+        #fff{
+            background-color: blueviolet;
+        }
+        /* 通用选择器 */
+        *{
+            font-size: 33px;
+        }
+        /* 子元素选择器 */
+         .father>.son{
+            font-family: kaiti; 
+         }
+         /* 后代元素选择器 */
+         .father h1{
+            background-color: brown;
+         }
+         /* 相邻元素选择器 */
+         h5+p{
+            color: chartreuse;
+         }
+         /* 伪类选择器 */
+         #element:hover{
+         background-color:chartreuse;
+        }
+        /* 伪元素选择器 */
+        
+    </style>
+</head>
+<body>
+    <h1>不同类的css选择器</h1>
+
+    <h2>元素选择器</h2>
+
+    <h3 class="highlight">类选择器</h3>
+    <h3>另一个类选择器</h3>
+
+    <h4 id="fff">id选择器</h4>
+
+    <div class="father">
+        <h1 class="son">子元素</h1>
+        <div class="grandson">
+                <h1>孙子元素</h1>
+            </div>
+    </div>
+
+
+    <p>这是一个p标签</p>
+    <h5>h5标签</h5>
+    <p>另一个p标签</p>
+
+    <p id="element">伪类选择器</p>
+</body>
+</html>
