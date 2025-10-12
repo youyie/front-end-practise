@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM</title>
+</head>
+<body>
+    <div id="t1">id选择器示例</div>
+    <div class="t2">类选择器示例</div>
+    <div>普通的div标签</div>
+
+    <button>点击示例</button>
+    <script>
+        var tt1 = document.getElementById('t1');
+        var tt2 = document.getElementsByClassName('t2')[0];
+        var tt3 = document.getElementsByTagName('div')[2];
+        console.log(tt1);
+        console.log(tt2);
+        console.log(tt3);
+
+
+        tt1.innerHTML = '<a href="#">点击链接</a>';
+        tt2.innerText = '<a href="#">点击链接</a>';
+
+        tt3.style.color = 'red';
+        tt3.style.backgroundColor = 'black';
+        tt3.style.fontSize = '30px';
+
+        var button1 = document.getElementsByTagName('button')[0];
+        console.log(button1);
+
+        button1.onclick = function() {
+            alert('再点让你飞起来！！！');
+        }
+
+        button1.addEventListener('click',function() {
+            alert('飞起来！！！');
+        })
+
+        // button1.addEventListener('click',nijiama)
+        // function nijiama() {
+        //     alert('fvv!!!!');
+        // }
+    </script>
+
+</body>
+</html>
