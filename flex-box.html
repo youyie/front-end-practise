@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex布局示例</title>
+    <style>
+        /* 基础样式：让容器更显眼，方便观察 */
+        .flex-container {
+            width: 500px; /* 容器宽度 */
+            height: 200px; /* 容器高度 */
+            margin: 20px auto; /* 容器居中 */
+            border: 2px solid #333; /* 容器边框 */
+            padding: 10px; /* 容器内边距 */
+            background-color: #f5f5f5; /* 容器背景色 */
+            display: flex; /* 关键：将元素设为Flex容器 */
+        }
+
+        /* Flex项目样式：区分不同项目 */
+        .flex-item {
+            width: 80px; /* 项目默认宽度 */
+            height: 80px; /* 项目默认高度 */
+            line-height: 80px; /* 文字垂直居中 */
+            text-align: center; /* 文字水平居中 */
+            color: white; /* 文字颜色 */
+            font-weight: bold; /* 文字加粗 */
+            margin: 0 10px; /* 项目之间的间距 */
+        }
+
+        /* 给不同项目设置不同背景色，方便区分 */
+        .item1 { background-color: #ff4444; }
+        .item2 { background-color: #00c851; }
+        .item3 { background-color: #33b5e5; }
+
+        /* 示例1：水平居中对齐（常用） */
+        .flex-center {
+            justify-content: center; /* 项目在水平方向居中 */
+            align-items: center; /* 项目在垂直方向居中 */
+        }
+
+        /* 示例2：项目均匀分布（常用） */
+        .flex-space {
+            justify-content: space-between; /* 项目两端对齐，中间间距相等 */
+            align-items: flex-end; /* 项目在垂直方向靠下对齐 */
+        }
+
+        /* 示例3：纵向排列（改变排列方向） */
+        .flex-column {
+            flex-direction: column; /* 排列方向从“横向”改为“纵向” */
+            justify-content: space-around; /* 项目在纵向均匀分布，上下留空 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 示例1：项目水平+垂直居中 -->
+    <h3>1. 项目水平+垂直居中</h3>
+    <div class="flex-container flex-center">
+        <div class="flex-item item1">项目1</div>
+        <div class="flex-item item2">项目2</div>
+        <div class="flex-item item3">项目3</div>
+    </div>
+
+    <!-- 示例2：项目水平均匀分布+垂直靠下 -->
+    <h3>2. 项目水平均匀分布+垂直靠下</h3>
+    <div class="flex-container flex-space">
+        <div class="flex-item item1">项目1</div>
+        <div class="flex-item item2">项目2</div>
+        <div class="flex-item item3">项目3</div>
+    </div>
+
+    <!-- 示例3：项目纵向排列+均匀分布 -->
+    <h3>3. 项目纵向排列+均匀分布</h3>
+    <div class="flex-container flex-column">
+        <div class="flex-item item1">项目1</div>
+        <div class="flex-item item2">项目2</div>
+        <div class="flex-item item3">项目3</div>
+    </div>
+</body>
+</html>

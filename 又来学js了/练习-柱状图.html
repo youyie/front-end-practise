@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+    }
+    .box{
+        background-color: aqua;
+
+        height: 400px;
+        width: 700px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        border-left: solid 2px pink;
+        border-bottom: solid 2px pink;
+        margin-left: auto;
+    }
+    .box2{
+        background-color: blue;
+
+        width: 700px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .box > div{
+        display: flex;
+        padding: 0;
+        gap: 40px;
+        align-items: flex-end;
+    }
+    img{
+        width: 30px;
+        height: 1cm;
+        margin-bottom: 0;
+    }
+    span{
+        display: inline-block;
+    }
+</style>
+<body>
+    <div class="box">
+    <div>
+        <img id="1" src="耄耋.jpg" alt="">
+    </div>
+    <div>
+        <img id="2" src="耄耋.jpg" alt="">
+    </div>
+    <div>
+        <img id="3" src="耄耋.jpg" alt="">
+    </div>
+    <div>
+        <img id="4" src="耄耋.jpg" alt="">
+    </div>
+    </div>
+    <div class="box2">
+        <span>同学</span>
+        <span>室友</span>
+        <span>兄弟</span>
+        <span>自己</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS再学习</title>
+</head>
+<body>
+    
+    <script>
+        document.write('<h1>我是一级标题</h1>');
+
+        console.log('程序员看过来');
+
+        //alert和prompt调用警示框，先于其他语句运行
+        let age = prompt('你多大了：');//prompt取得的数据类型为String
+
+        /*An identifier(标识符) is the name you give to a variable(变量).
+        Must start with a letter, _, or $,
+        Can contain digits after the first character,
+        Cannot be a reserved keyword (let, const, if, etc.),
+        Are case-sensitive  区分大小写*/
+
+        //命名法:Underscore:  下划线：
+        // first_name, last_name, master_card, inter_city.
+
+        // Upper Camel Case (Pascal Case):
+        // 大驼峰式（帕斯卡式）：
+        // FirstName, LastName, MasterCard, InterCity.
+
+
+        // Lower Camel Case:  小驼峰式：
+        // firstName, lastName, masterCard, interCity.
+
+        //-----------以后就用小驼峰命名法-----------
+        let x = '变量初始化';
+        const y = '我是字面量';
+        x = '赋值';
+
+        let number1 = 114514;
+        document.write('嘻嘻' + number1);
+        document.write('<br>');
+
+
+
+
+
+        let arrayStars = ['Earth', 'Mars', 'Jupiter', 'Venus'];
+        arrayStars.push('Saturn');//新增至末尾
+        arrayStars.unshift('Mercury');//新增至开头
+        // The push() method returns the new array length:
+        console.log(arrayStars.push());
+        //The unshift() method returns the new array length:
+        console.log(arrayStars.unshift());
+        console.log(arrayStars.length);
+
+        //The pop() method removes the last element from an array:
+        arrayStars.pop();
+        // The pop() method returns the value that was "popped out":
+        let planet = arrayStars.pop;
+        /*The shift() method removes the first array element and "shifts"
+        all other elements to a lower index.*/
+        arrayStars.shift();
+        //The shift() method returns the value that was "shifted out":
+        console.log(arrayStars.shift());
+
+        // The first parameter【参数】 (2) defines the position where new elements should be added (spliced in).
+        // The second parameter (0) defines how many elements should be removed.
+        // The rest of the parameters【此处参数为空时，可用来删除元素】 ("Uranus" , "Neptune") define the new elements to be added.
+        // The splice() method returns an array with the deleted items:
+        console.log(arrayStars.splice(2, 0, "Uranus", "Neptune"));
+
+
+
+        //循环输出数组
+        for(let i = 0; arrayStars[i]; i++){
+            console.log(arrayStars[i]);
+        }
+{           
+            let i = 0;
+            while(arrayStars[i]){
+                console.log(arrayStars[i]);
+                i++;
+            }
+}        //arrayStars[i] 为 “假值” 时循环停止（假值包括 undefined、null、0、''、false 等）。
+        //若数组中间有假值，后续元素不会遍历    
+
+
+
+
+
+        //Template Strings(模板字符串)
+        //allow both single and double quotes(引号) inside a string
+        //Template Strings allow variables in strings.-----形如${}-----
+        let userAge = (`User'今年'${age}岁了，非常"有钱"`);
+        document.write(userAge);
+        //Template Strings allow multiline(多行) strings
+        //Template Strings allow interpolation of expressions(表达式) in strings
+        let userIntroduction = (`<h2>User今年` + age + `岁了，非常有钱<h2>
+                                Ta的算术能力超群
+                                计算出10 + 2.5 = ${(10 + 2.5).toFixed(4)}
+                                竟然精确到了小数点后四位`);
+        document.write(userIntroduction);
+
+
+
+
+
+        let typeIsNumber = 123;
+        let typeIsBolean = true;
+        let typeIsNull = null;
+        let typeIsUndefined;//等同于 = undefined;
+        console.log(typeof(123));
+        console.log(typeof(true));
+        console.log(typeof(null));
+        console.log(typeof(undefined));//typeof返回字符串
+    
+        //隐式转换
+        console.log( + '123');  //转换为Number
+        console.log(2 - '2');   //转换为Number
+        console.log(typeof(+ '123'));//Number
+        console.log(typeof( 2 - '2'));//Number
+        //显示转换
+        let transIntoStr = 12345;
+        console.log(String(transIntoStr));
+        let transIntoNum = '12345';
+        console.log(Number(transIntoNum));
+        console.log(parseFloat('12px'));
+        console.log(parseFloat('12.345px'));
+        console.log(parseFloat('qw123.45px'));//数字开头才取得到
+        console.log(parseInt('12px'));
+        console.log(parseInt('12.345px'));
+        console.log(parseInt('qw123.45px'));
+        
+
+    </script>
+</body>
+</html>
