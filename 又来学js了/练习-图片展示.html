@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片展示</title>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+    .box{
+        width: 700px;
+        height: auto;
+        margin-left: 30%;
+        display: flex;
+        align-items: flex-end;
+    }
+    .box img{
+        width: 100%;
+        height: 100%;
+    }
+    .fence{
+        width: 700px;
+        height: 70px;
+        margin-left: 30%;
+        background-color: rgba(68, 23, 99, 0.27);
+        text-align: right;
+        font-size: 25px;
+    }
+    .fence .picName{
+        font-family: 'Playfair Display', cursive;
+    }
+    .indicater{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        margin-top: 0px;
+        padding: 0;
+    }
+    .indicater li{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgb(255, 255, 255);
+        /* border: solid 1px black; */
+        margin: 0 5px;
+        opacity: 0.4;
+        cursor: pointer;
+    }
+    .indicater .active{
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        opacity: 0.9;
+    }
+</style>
+<body>
+    <div class="box">
+        <img src="./网图/mostima.jpg" alt="">
+    </div>
+    <div class="fence">
+        <div class="picName">
+            mostima
+        </div>
+        <ul class="indicater">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        const sliderData = [
+            {url:"./网图/mostima.jpg", name:"mostima"},
+            {url:"./网图/月下龙与少女.jpg", name:"月下龙与少女"},
+            {url:"./网图/熠曲丰碑-blue.jpg", name:"熠曲丰碑-blue"},
+            {url:"./网图/夕令.jpg", name:"夕令"},
+            {url:"./网图/无职全家福.png", name:"无职全家福"},
+            {url:"./网图/水月.jpg", name:"水月"},
+            {url:"./网图/塞雷亚.jpg", name:"塞雷亚"},
+            {url:"./网图/旗袍与墨.jpg", name:"旗袍与墨"},
+            {url:"./网图/令.jpg", name:"令"},
+            {url:"./网图/莱茵生命.jpg", name:"莱茵生命"},
+            {url:"./网图/赫拉格开后宫.jpg", name:"赫拉格开后宫"}
+        ];
+
+        const turn =parseInt(Math.random()*sliderData.length);;
+        const box = document.querySelector('.box img');
+        const picName = document.querySelector('.picName');
+        const indicater = document.querySelectorAll('.indicater li');
+        box.src = sliderData[turn].url;
+        picName.innerText = sliderData[turn].name;
+        indicater.forEach(item => item.classList.remove('active'));
+        indicater[turn].classList.add('active');
+
+    </script>
+</body>
+</html>

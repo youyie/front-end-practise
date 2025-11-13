@@ -4,22 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS再学习</title>
+    <style>
+        .bacLightblue{
+            background-color: lightblue;
+        }
+        .toAdd{
+            color: rgb(225, 140, 65);
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="demo">123</div>
+    <div class="demo">456</div>
+    <div data-one="1" data-two="2" data-three="3">自定义属性</div>
+    <p>用类名修改样式</p>
+    <input type="text" placeholder="在此输入内容" value="我勒个去">
+
+    <ul>
+        <li>测试1</li>
+        <li>测试2</li>
+        <li>测试3</li>
+    </ul>
+
+    <ul>
+        <li>测试4</li>
+        <li>测试5</li>
+        <li>测试6</li>
+    </ul>
     <script>
         document.write('<h1>我是一级标题</h1>');
 
         console.log('程序员看过来');
 
-        //alert和prompt调用警示框，先于其他语句运行
-        let age = prompt('你多大了：');//prompt取得的数据类型为String
-
-        /*An identifier(标识符) is the name you give to a variable(变量).
+        /*An identifier【标识符】 is the name you give to a variable(变量).
         Must start with a letter, _, or $,
         Can contain digits after the first character,
         Cannot be a reserved keyword (let, const, if, etc.),
-        Are case-sensitive  区分大小写*/
+        Are case-sensitive【区分大小写】*/
 
         //命名法:Underscore:  下划线：
         // first_name, last_name, master_card, inter_city.
@@ -44,7 +65,7 @@
 
 
 
-
+// <-------------------- 数组 -------------------------->
         let arrayStars = ['Earth', 'Mars', 'Jupiter', 'Venus'];
         arrayStars.push('Saturn');//新增至末尾
         arrayStars.unshift('Mercury');//新增至开头
@@ -57,7 +78,7 @@
         //The pop() method removes the last element from an array:
         arrayStars.pop();
         // The pop() method returns the value that was "popped out":
-        let planet = arrayStars.pop;
+        let planet = arrayStars.pop();
         /*The shift() method removes the first array element and "shifts"
         all other elements to a lower index.*/
         arrayStars.shift();
@@ -76,26 +97,48 @@
         for(let i = 0; arrayStars[i]; i++){
             console.log(arrayStars[i]);
         }
+
 {           
             let i = 0;
             while(arrayStars[i]){
                 console.log(arrayStars[i]);
                 i++;
             }
-}        //arrayStars[i] 为 “假值” 时循环停止（假值包括 undefined、null、0、''、false 等）。
+}       //arrayStars[i] 为 “假值” 时循环停止（假值包括 undefined、null、0、''、false 等）。
         //若数组中间有假值，后续元素不会遍历    
 
 
 
+        //数组排序
+        arrayStars.sort(function(a, b){
+            return a.localeCompare(b);//按首字母顺序排序
+        });
+        console.log(arrayStars);
+        {
+            let nums = [1, 5, 3, 9, 7, 6, 8, 2, 4];
+            nums.sort(function(a, b){
+                return a - b;//按数字大小排序
+            });
+            console.log(nums);
+            nums.sort(function(a, b){
+                return b - a;//按数字大小倒序排序
+            });
+        }
 
 
-        //Template Strings(模板字符串)
-        //allow both single and double quotes(引号) inside a string
+
+
+// <-------------------- 模板字符串 -------------------------->
+        //Template Strings【模板字符串】
+        //allow both single and double quotes【引号】inside a string
         //Template Strings allow variables in strings.-----形如${}-----
+        let age = prompt('你多大了：');
+        //alert和prompt调用警示框，先于其他语句运行
+        // //prompt取得的数据类型为String
         let userAge = (`User'今年'${age}岁了，非常"有钱"`);
         document.write(userAge);
-        //Template Strings allow multiline(多行) strings
-        //Template Strings allow interpolation of expressions(表达式) in strings
+        //Template Strings allow multiline【多行】 strings
+        //Template Strings allow interpolation of expressions【表达式】 in strings
         let userIntroduction = (`<h2>User今年` + age + `岁了，非常有钱<h2>
                                 Ta的算术能力超群
                                 计算出10 + 2.5 = ${(10 + 2.5).toFixed(4)}
@@ -105,7 +148,7 @@
 
 
 
-
+// <-------------------- 数据类型 -------------------------->
         let typeIsNumber = 123;
         let typeIsBolean = true;
         let typeIsNull = null;
@@ -133,6 +176,146 @@
         console.log(parseInt('qw123.45px'));
         
 
-    </script>
+
+
+// <-------------------- 函数 -------------------------->
+        function getSum(num1 = 0, num2 = 0){//具名函数，参数默认值为0
+            console.log(num1 + num2);
+        };
+        let getSum2 = function(num1 = 0, num2 = 0){//函数表达式，参数默认值为0
+            console.log(num1 + num2);
+        };
+        //具名函数会被提升，可以在声明之前调用
+        //函数表达式不会被提升，必须在声明之后调用
+
+        (function(x, y){
+            console.log(x + y);
+        })(1, 2);//匿名函数，自执行函数，局部作用域，避免变量冲突
+        (function(){}());//自执行函数的另一种写法
+        (function mingzi(){})();//自执行函数也可以是具名函数，但名字只能在函数体即{}内使用
+
+        //逻辑中断
+        //x || y  当x为真时，返回x；当x为假时，返回y
+        //x && y  当x为真时，返回y；当x为假时，返回x
+
+        //箭头函数，函数的简写形式
+        let arrowSum = (a, b) => {
+            return a + b;
+        };
+
+
+
+
+// <-------------------- 对象 -------------------------->
+        //Object:  一种数据类型, 以键值对的形式存储多个值
+        //You should declare objects with the const keyword.
+        //You can still change the properties【属性】 of a const object.
+        //Using const prevents you from reassigning【重新指向】 the object to a different value.
+        //Spaces and line breaks are not important. An object literal can span multiple lines:
+        const person = {
+            'former-name': 'JD',//属性名中有连字符时，必须用引号括起来
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30,
+            fullName: function(){
+                return this.firstName + ' ' + this.lastName;//this代表当前对象
+            }
+        };
+        console.log(person['former-name']);//访问属性的另一种写法
+        //Displaying a JavaScript object will output [object Object]
+        console.log(person);
+        console.log(person.fullName());
+
+        person.city = 'Beijing';//添加属性
+        person.age = 31;//修改属性
+        person.fullName = function(){
+            return this.lastName + ', ' + this.firstName;
+        };
+        // person['country'] = 'China';//添加属性的另一种写法
+        // person['age'] = 32;//修改属性的另一种写法
+        // person['fullName'] = function(){//修改方法的另一种写法
+        //     return this.lastName + ', ' + this.firstName;
+        // };
+
+        //对象构造函数
+        function Person(firstName, lastName, age){
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.fullName = function(){
+                return this.firstName + ' ' + this.lastName;
+            };
+        }
+        const person1 = new Person('Jane', 'Smith', 25);
+        console.log(person1.fullName());
+
+        // 遍历对象
+        for(let key in person){
+            console.log(key + ': ' + person[key]);//key以字符串形式表示属性名
+        }
+
+        //内置对象
+        console.log(Math.PI);
+        console.log(Math.ceil(5.3));//向上取整
+        console.log(Math.floor(5.7));//向下取整
+        console.log(Math.round(5.5));//四舍五入
+        console.log(Math.random());//返回0~1之间的随机数，包括0，不包括1
+        console.log(Math.max(1, 3, 2, 5, 4));//返回最大值
+        console.log(Math.min(1, 3, 2, 5, 4));//返回最小值
+        console.log(Math.abs(-10));//返回绝对值
+               
+        
+
+
+// <-------------------- DOM对象 -------------------------->
+        const allDivs = document.querySelectorAll('div');//获取所有匹配的元素
+        const demoDiv1 = document.querySelector('.demo');//获取class为demo的第一个元素
+        const demoDiv2 = document.querySelector('#demo');//获取id为demo的第一个元素
+        const ullist1 = document.querySelector('ul li');//获取第一个ul下的第一个li元素
+        const ullist2 = document.querySelector('ul li:nth-child(2)');//获取第一个ul下的第二个li元素
+        const ullist3 = document.querySelector('ul:nth-of-type(2) li');//获取第二个ul下的第一个li元素
+        const ullist4 = document.querySelectorAll('ul li');//获取所有ul下的li元素，返还伪数组
+        console.log(ullist1);
+        console.log(ullist2);
+        console.log(ullist3);
+        console.log(ullist4);
+
+        demoDiv1.style.backgroundColor = 'lightblue';
+        for(let i = 0; i < ullist4.length; i++){
+            ullist4[i].style.backgroundColor = 'lightgray';
+        }
+
+        document.getElementById('demo').innerHTML = '通过ID获取元素并修改其内容';
+        //getElementByClassName, getElementByTagName等方法类似
+
+        console.log(demoDiv1.innerText);//只获取文本内容
+        demoDiv1.innerText = '新的文本内容';//只设置文本内容
+        console.log(demoDiv1.innerHTML);//获取HTML内容
+        demoDiv1.innerHTML = '<strong>新的HTML内容</strong>';//设置HTML内容
+
+        let p_Lightblue = document.querySelector('p');
+        p_Lightblue.className = ('bacLightblue');//添加类名
+        p_Lightblue.classList.add('toAdd');//添加类名的另一种写法
+        p_Lightblue.classList.remove('toAdd');//移除类名
+        p_Lightblue.classList.toggle('toAdd');//切换类名，若存在则移除，若不存在则添加
+
+        const btn = document.createElement('button');//创建一个按钮元素
+        btn.innerHTML = '点我试试';//设置按钮内容
+        btn.onclick = function(){//为按钮添加点击事件
+            alert('你点击了按钮！');
+        };
+        document.body.appendChild(btn);//将按钮添加到页面中
+        btn.disabled = true;//禁用按钮
+
+        let inputBox = document.querySelector('input');
+        inputBoxValue = inputBox.value;//设置输入框的默认内容
+        console.log(inputBoxValue);//获取输入框的内容
+
+        //自定义属性 data-*
+        let demoDiv3 = document.querySelector('div[data-one]');
+        console.log(demoDiv3.dataset);
+        //获取所有自定义属性（有原生属性不可通过dataset获取），返回一个DOMStringMap对象
+        console.log(demoDiv3.dataset.one);//获取data-one属性的值
+        </script>
 </body>
 </html>
