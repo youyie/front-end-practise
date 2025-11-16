@@ -316,6 +316,40 @@
         console.log(demoDiv3.dataset);
         //获取所有自定义属性（有原生属性不可通过dataset获取），返回一个DOMStringMap对象
         console.log(demoDiv3.dataset.one);//获取data-one属性的值
+
+
+
+
+// <-------------------- 计时器 -------------------------->
+        setInterval(function(){//每隔一秒钟修改一次输入框的内容
+            let currentTime = new Date().toLocaleTimeString();
+            inputBox.value = currentTime;
+        }, 1000);
+
+        setTimeout(function(){//三秒后启用按钮
+            btn.disabled = false;
+        }, 3000);
+
+        //关闭计时器
+        let timer = setInterval(function(){
+            console.log('计时器运行中...');
+        }, 2000);
+        setTimeout(function(){
+            clearInterval(timer);
+            console.log('计时器已关闭');
+        }, 10000);
+
+
+
+
+// <-------------------- 事件监听 -------------------------->
+        demoDiv1.addEventListener('mouseover', function(){//鼠标悬停事件
+            demoDiv1.style.backgroundColor = 'lightgreen';
+        });
+        demoDiv1.addEventListener('mouseout', function(){//鼠标移出事件
+            demoDiv1.style.backgroundColor = 'lightblue';
+        });
+
         </script>
 </body>
 </html>

@@ -91,16 +91,41 @@
             {url:"./网图/莱茵生命.jpg", name:"莱茵生命"},
             {url:"./网图/赫拉格开后宫.jpg", name:"赫拉格开后宫"}
         ];
+        
+        function updateSlider(index) {
+        box.src = sliderData[index].url;
+        picName.innerText = sliderData[index].name;
+        indicater.forEach(item => item.classList.remove('active'));
+        indicater[index].classList.add('active');
+        }
 
-        const turn =parseInt(Math.random()*sliderData.length);;
+        let turn = 0;
         const box = document.querySelector('.box img');
         const picName = document.querySelector('.picName');
         const indicater = document.querySelectorAll('.indicater li');
-        box.src = sliderData[turn].url;
-        picName.innerText = sliderData[turn].name;
-        indicater.forEach(item => item.classList.remove('active'));
-        indicater[turn].classList.add('active');
+        const turns =setInterval(()=>{
+            turn++;
+            if(turn>=sliderData.length){
+                turn=0;
+        }
+            updateSlider(turn);
+        }, 3000);
 
+        indicater.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                clearInterval(turns);
+                turn = index;
+                updateSlider(turn);
+                // 重启自动轮播
+                turns = setInterval(() => {
+                turn++;
+                if (turn >= sliderData.length) turn = 0;
+                updateSlider(turn);
+                }, 3000);
+            });
+        });
+
+        
     </script>
 </body>
 </html>
